@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaCSS - The Future of Web Styling</title>
+  <link rel="stylesheet" href="css/nexa.css">
+  <style>
+    /* Demo page specific styles */
+    .showcase-item {
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .code-preview {
+      background-color: var(--surface-code);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+    
+    .color-block {
+      height: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .color-block:hover {
+      transform: scale(1.05);
+    }
+    
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      background: var(--gradient-primary);
+      color: white;
+    }
+    
+    .demo-section {
+      padding: 3rem 0;
+    }
+    
+    .demo-section:nth-child(even) {
+      background-color: var(--surface-alt);
+    }
+    
+    .pattern-bg {
+      background-color: var(--surface-alt);
+      background-image: radial-gradient(var(--color-accent-200) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    
+    .hero-shape {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: var(--gradient-accent);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .testimonial-card {
+      padding: 2rem;
+      border-radius: 12px;
+      background-color: var(--surface-card);
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: """";
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--color-primary-200);
+      opacity: 0.3;
+      font-family: serif;
+    }
+    
+    .avatar {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <a href="#" class="logo">
+          <span class="logo-text">Nexa<span class="text-gradient">CSS</span></span>
+        </a>
+      </div>
+      
+      <nav class="navbar-menu">
+        <a href="#features" class="navbar-link">Features</a>
+        <a href="#components" class="navbar-link">Components</a>
+        <a href="#utilities" class="navbar-link">Utilities</a>
+        <a href="#examples" class="navbar-link">Examples</a>
+      </nav>
+      
+      <div class="navbar-actions">
+        <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path>
+          </svg>
+        </button>
+        <a href="#download" class="btn btn-primary ml-4">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero pattern-bg">
+    <div class="hero-shape"></div>
+    <div class="container relative">
+      <div class="row align-center">
+        <div class="col-lg-6 col-md-8 col-12">
+          <span class="badge badge-accent mb-3">Version 1.0</span>
+          <h1 class="hero-title mb-4">Design beautiful interfaces with <span class="text-gradient">NexaCSS</span></h1>
+          <p class="hero-subtitle mb-5">A modern, intuitive CSS framework that empowers designers and developers to create stunning web experiences with minimal effort.</p>
+          
+          <div class="hero-actions">
+            <a href="#get-started" class="btn btn-primary btn-lg mr-3">Get Started</a>
+            <a href="#documentation" class="btn btn-outline btn-lg">Documentation</a>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-4 col-12 d-none d-md-block">
+          <div class="hero-image">
+            <svg width="100%" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--color-primary-500)" />
+                  <stop offset="100%" stop-color="var(--color-accent-500)" />
+                </linearGradient>
+              </defs>
+              <rect x="150" y="50" width="300" height="300" rx="20" fill="white" stroke="url(#grad1)" stroke-width="8" />
+              <rect x="180" y="100" width="240" height="40" rx="8" fill="var(--color-primary-100)" />
+              <rect x="180" y="160" width="120" height="40" rx="8" fill="var(--color-accent-100)" />
+              <rect x="320" y="160" width="100" height="40" rx="8" fill="var(--color-accent-200)" />
+              <rect x="180" y="220" width="240" height="80" rx="8" fill="var(--color-primary-200)" />
+              <circle cx="300" cy="50" r="20" fill="url(#grad1)" />
+              <circle cx="150" cy="200" r="15" fill="url(#grad1)" />
+              <circle cx="450" cy="200" r="15" fill="url(#grad1)" />
+              <circle cx="300" cy="350" r="20" fill="url(#grad1)" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header text-center mb-6">
+        <h2 class="section-title">Why Choose NexaCSS?</h2>
+        <p class="section-subtitle">Designed with modern web development in mind</p>
+        <div class="divider mx-auto"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+          <div class="card card-hover h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+              </div>
+              <h3 class="card-title">Intuitive Syntax</h3>
+              <p class="card-text">Clean, readable class names that make sense and are easy to remember.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+          <div class="card card-hover h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <h3 class="card-title">Responsive Design</h3>
+              <p class="card-text">Built-in responsive grid and utilities that adapt to any screen size.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+          <div class="card card-hover h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                </svg>
+              </div>
+              <h3 class="card-title">Dark Mode</h3>
+              <p class="card-text">Seamless dark mode integration with a single attribute change.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+          <div class="card card-hover h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                  <line x1="16" y1="8" x2="2" y2="22"></line>
+                  <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                </svg>
+              </div>
+              <h3 class="card-title">Customizable</h3>
+              <p class="card-text">Easy to customize with CSS variables and a modular architecture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid System -->
+  <section id="grid" class="demo-section">
+    <div class="container">
+      <div class="section-header mb-5">
+        <h2 class="section-title">Flexible Grid System</h2>
+        <p class="section-subtitle">Build complex layouts with ease</p>
+        <div class="divider"></div>
+      </div>
+      
+      <div class="showcase-item">
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="grid-demo">col-12</div>
+          </div>
+        </div>
+        
+        <div class="row mb-4">
+          <div class="col-6">
+            <div class="grid-demo">col-6</div>
+          </div>
+          <div class="col-6">
+            <div class="grid-demo">col-6</div>
+          </div>
+        </div>
+        
+        <div class="row mb-4">
+          <div class="col-4">
+            <div class="grid-demo">col-4</div>
+          </div>
+          <div class="col-4">
+            <div class="grid-demo">col-4</div>
+          </div>
+          <div class="col-4">
+            <div class="grid-demo">col-4</div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="grid-demo">col-lg-3 col-md-6 col-12</div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="grid-demo">col-lg-3 col-md-6 col-12</div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="grid-demo">col-lg-3 col-md-6 col-12</div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="grid-demo">col-lg-3 col-md-6 col-12</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-preview mt-4">
+<pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-lg-3 col-md-6 col-12"&gt;Content&lt;/div&gt;
+  &lt;div class="col-lg-3 col-md-6 col-12"&gt;Content&lt;/div&gt;
+  &lt;div class="col-lg-3 col-md-6 col-12"&gt;Content&lt;/div&gt;
+  &lt;div class="col-lg-3 col-md-6 col-12"&gt;Content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section id="typography" class="section">
+    <div class="container">
+      <div class="section-header mb-5">
+        <h2 class="section-title">Beautiful Typography</h2>
+        <p class="section-subtitle">Consistent and readable text styles</p>
+        <div class="divider"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Headings</h3>
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Text Styles</h3>
+              <p class="text-xl">Extra large text for important content.</p>
+              <p class="text-lg">Large text for subheadings and introductions.</p>
+              <p>Regular paragraph text with good readability.</p>
+              <p class="text-sm">Small text for less important information.</p>
+              <p class="text-xs">Extra small text for captions and footnotes.</p>
+              <p class="text-bold">Bold text for emphasis.</p>
+              <p class="text-italic">Italic text for quotes or emphasis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Special Text</h3>
+              <p class="lead mb-4">Lead paragraph text is larger and has a lighter font weight, making it perfect for introductory text.</p>
+              <blockquote class="blockquote">
+                <p>Design is not just what it looks like and feels like. Design is how it works.</p>
+                <footer class="blockquote-footer">Steve Jobs</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Text Colors</h3>
+              <p class="text-primary">Primary text color</p>
+              <p class="text-secondary">Secondary text color</p>
+              <p class="text-accent">Accent text color</p>
+              <p class="text-success">Success text color</p>
+              <p class="text-warning">Warning text color</p>
+              <p class="text-danger">Danger text color</p>
+              <p class="text-info">Info text color</p>
+              <p class="text-muted">Muted text color</p>
+              <p class="text-gradient">Gradient text effect</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colors 
+  <section id="colors" class="demo-section">
+    <div class="container">
+      <div class="section-header mb-5">
+        <h2 class="section-title">Vibrant Color System</h2>
+        <p class="section-subtitle">A thoughtful palette for modern interfaces</p>
+        <div class="divider"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-primary-500);">Primary</div>
+          <div class="color-info text-center">--color-primary-500</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-secondary-500);">Secondary</div>
+          <div class="color-info text-center">--color-secondary-500</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-accent-500);">Accent</div>
+          <div class="color-info text-center">--color-accent-500</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-neutral-500);">Neutral</div>
+          <div class="color-info text-center">--color-neutral-500</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-success-500);">Success</div>
+          <div class="color-info text-center">--color-success-500</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-warning-500);">Warning</div>
+          <div class="color-info text-center">--color-warning-500</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-danger-500);">Danger</div>
+          <div class="color-info text-center">--color-danger-500</div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 mb-4">
+          <div class="color-block" style="background-color: var(--color-info-500);">Info</div>
+          <div class="color-info text-center">--color-info-500</div>
+        </div>
+      </div>
+      
+      <div class="mt-5">
+        <h3 class="component-title mb-4">Gradients</h3>
+        <div class="row">
+          <div class="col-md-4 col-12 mb-4">
+            <div class="color-block" style="background: var(--gradient-primary);">Primary Gradient</div>
+            <div class="color-info text-center">--gradient-primary</div>
+          </div>
+          <div class="col-md-4 col-12 mb-4">
+            <div class="color-block" style="background: var(--gradient-secondary);">Secondary Gradient</div>
+            <div class="color-info text-center">--gradient-secondary</div>
+          </div>
+          <div class="col-md-4 col-12 mb-4">
+            <div class="color-block" style="background: var(--gradient-accent);">Accent Gradient</div>
+            <div class="color-info text-center">--gradient-accent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- Components --
+  <section id="components" class="section">
+    <div class="container">
+      <div class="section-header mb-5">
+        <h2 class="section-title">Elegant Components</h2>
+        <p class="section-subtitle">Pre-built elements to speed up your workflow</p>
+        <div class="divider"></div>
+      </div>
+      
+      <!-- Buttons --
+      <div class="showcase-item">
+        <h3 class="component-title mb-4">Buttons</h3>
+        
+        <div class="card">
+          <div class="card-body">
+            <div class="mb-4">
+              <button class="btn btn-primary mr-2 mb-2">Primary</button>
+              <button class="btn btn-secondary mr-2 mb-2">Secondary</button>
+              <button class="btn btn-accent mr-2 mb-2">Accent</button>
+              <button class="btn btn-success mr-2 mb-2">Success</button>
+              <button class="btn btn-warning mr-2 mb-2">Warning</button>
+              <button class="btn btn-danger mr-2 mb-2">Danger</button>
+              <button class="btn btn-info mr-2 mb-2">Info</button>
+              <button class="btn btn-light mr-2 mb-2">Light</button>
+              <button class="btn btn-dark mr-2 mb-2">Dark</button>
+            </div>
+            
+            <div class="mb-4">
+              <button class="btn btn-outline-primary mr-2 mb-2">Primary</button>
+              <button class="btn btn-outline-secondary mr-2 mb-2">Secondary</button>
+              <button class="btn btn-outline-accent mr-2 mb-2">Accent</button>
+              <button class="btn btn-outline-success mr-2 mb-2">Success</button>
+              <button class="btn btn-outline-warning mr-2 mb-2">Warning</button>
+              <button class="btn btn-outline-danger mr-2 mb-2">Danger</button>
+              <button class="btn btn-outline-info mr-2 mb-2">Info</button>
+            </div>
+            
+            <div>
+              <button class="btn btn-primary btn-sm mr-2 mb-2">Small</button>
+              <button class="btn btn-primary mr-2 mb-2">Default</button>
+              <button class="btn btn-primary btn-lg mr-2 mb-2">Large</button>
+              <button class="btn btn-primary btn-pill mr-2 mb-2">Pill</button>
+              <button class="btn btn-primary btn-icon mr-2 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </button>
+              <button class="btn btn-gradient mr-2 mb-2">Gradient</button>
+            </div>
+          </div>
+        </div>  -->
+        
+        <div class="code-preview mt-3">
+<pre><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-outline-primary"&gt;Outline&lt;/button&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;Large&lt;/button&gt;
+&lt;button class="btn btn-gradient"&gt;Gradient&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+      
+      <!-- Cards -->
+      <div class="showcase-item mt-6">
+        <h3 class="component-title mb-4">Cards</h3>
+        
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-header-title">Basic Card</h4>
+              </div>
+              <div class="card-body">
+                <p class="card-text">This is a basic card with a header and body. Cards are flexible content containers.</p>
+                <button class="btn btn-primary mt-3">Action</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+              <img src="/placeholder.svg?height=180&width=100%" alt="Card image" class="card-img-top">
+              <div class="card-body">
+                <h4 class="card-title">Card with Image</h4>
+                <p class="card-text">Cards can include images, text, and buttons.</p>
+                <div class="card-actions">
+                  <button class="btn btn-outline-primary">Details</button>
+                  <button class="btn btn-primary ml-2">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card card-gradient">
+              <div class="card-body">
+                <h4 class="card-title">Gradient Card</h4>
+                <p class="card-text">Cards can have gradient backgrounds for a more vibrant look.</p>
+                <button class="btn btn-light mt-3">Learn More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="code-preview mt-3">
+<pre><code>&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h4 class="card-header-title"&gt;Card Title&lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p class="card-text"&gt;Card content goes here.&lt;/p&gt;
+    &lt;button class="btn btn-primary mt-3"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <!-- Alerts -->
+      <div class="showcase-item mt-6">
+        <h3 class="component-title mb-4">Alerts</h3>
+        
+        <div class="alert alert-primary mb-3">
+          <div class="alert-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="alert-content">
+            <h4 class="alert-title">Information Alert</h4>
+            <p class="alert-message">This is an information alert — check it out!</p>
+          </div>
+        </div>
+        
+        <div class="alert alert-success mb-3">
+          <div class="alert-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="alert-content">
+            <h4 class="alert-title">Success Alert</h4>
+            <p class="alert-message">This is a success alert — check it out!</p>
+          </div>
+        </div>
+        
+        <div class="alert alert-warning mb-3">
+          <div class="alert-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <div class="alert-content">
+            <h4 class="alert-title">Warning Alert</h4>
+            <p class="alert-message">This is a warning alert — check it out!</p>
+          </div>
+        </div>
+        
+        <div class="alert alert-danger mb-3">
+          <div class="alert-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="15" y1="9" x2="9" y2="15"></line>
+              <line x1="9" y1="9" x2="15" y2="15"></line>
+            </svg>
+          </div>
+          <div class="alert-content">
+            <h4 class="alert-title">Danger Alert</h4>
+            <p class="alert-message">This is a danger alert — check it out!</p>
+          </div>
+        </div>
+        
+        <div class="code-preview mt-3">
+<pre><code>&lt;div class="alert alert-primary"&gt;
+  &lt;div class="alert-icon"&gt;
+    &lt;!-- Icon here --&gt;
+  &lt;/div&gt;
+  &lt;div class="alert-content"&gt;
+    &lt;h4 class="alert-title"&gt;Information Alert&lt;/h4&gt;
+    &lt;p class="alert-message"&gt;This is an information alert — check it out!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      <!-- Forms -->
+      <div class="showcase-item mt-6">
+        <h3 class="component-title mb-4">Forms</h3>
+        
+        <div class="card">
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleName" class="form-label">Name</label>
+                <input type="text" id="exampleName" class="form-control" placeholder="Enter your name">
+              </div>
+              
+              <div class="form-group">
+                <label for="exampleEmail" class="form-label">Email address</label>
+                <input type="email" id="exampleEmail" class="form-control" placeholder="name@example.com">
+                <div class="form-hint">We'll never share your email with anyone else.</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="examplePassword" class="form-label">Password</label>
+                <input type="password" id="examplePassword" class="form-control">
+              </div>
+              
+              <div class="form-group">
+                <label for="exampleSelect" class="form-label">Example select</label>
+                <select id="exampleSelect" class="form-control">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                  <option>Option 4</option>
+                  <option>Option 5</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="exampleTextarea" class="form-label">Example textarea</label>
+                <textarea id="exampleTextarea" class="form-control" rows="3"></textarea>
+              </div>
+              
+              <div class="form-check mb-3">
+                <input type="checkbox" id="exampleCheck" class="form-check-input">
+                <label for="exampleCheck" class="form-check-label">Check me out</label>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="code-preview mt-3">
+<pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="exampleEmail" class="form-label"&gt;Email address&lt;/label&gt;
+  &lt;input type="email" id="exampleEmail" class="form-control" placeholder="name@example.com"&gt;
+  &lt;div class="form-hint"&gt;We'll never share your email with anyone else.&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Utilities -->
+  <section id="utilities" class="demo-section">
+    <div class="container">
+      <div class="section-header mb-5">
+        <h2 class="section-title">Powerful Utilities</h2>
+        <p class="section-subtitle">Helper classes for rapid development</p>
+        <div class="divider"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Spacing</h3>
+              <div class="bg-neutral-100 p-0 mb-2 text-center">p-0 (No padding)</div>
+              <div class="bg-neutral-100 p-1 mb-2 text-center">p-1 (0.25rem padding)</div>
+              <div class="bg-neutral-100 p-2 mb-2 text-center">p-2 (0.5rem padding)</div>
+              <div class="bg-neutral-100 p-3 mb-2 text-center">p-3 (1rem padding)</div>
+              <div class="bg-neutral-100 p-4 mb-2 text-center">p-4 (1.5rem padding)</div>
+              <div class="bg-neutral-100 p-5 mb-2 text-center">p-5 (3rem padding)</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Flex Utilities</h3>
+              <div class="d-flex mb-3 bg-neutral-100 p-2">
+                <div class="p-2 bg-primary-100">Flex item 1</div>
+                <div class="p-2 bg-primary-200">Flex item 2</div>
+                <div class="p-2 bg-primary-300">Flex item 3</div>
+              </div>
+              
+              <div class="d-flex justify-center mb-3 bg-neutral-100 p-2">
+                <div class="p-2 bg-primary-100">Centered item 1</div>
+                <div class="p-2 bg-primary-200">Centered item 2</div>
+              </div>
+              
+              <div class="d-flex justify-between mb-3 bg-neutral-100 p-2">
+                <div class="p-2 bg-primary-100">Space between 1</div>
+                <div class="p-2 bg-primary-200">Space between 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Shadows</h3>
+              <div class="shadow-none p-3 mb-3 bg-neutral-100 text-center">No shadow</div>
+              <div class="shadow-sm p-3 mb-3 bg-neutral-100 text-center">Small shadow</div>
+              <div class="shadow p-3 mb-3 bg-neutral-100 text-center">Regular shadow</div>
+              <div class="shadow-md p-3 mb-3 bg-neutral-100 text-center">Medium shadow</div>
+              <div class="shadow-lg p-3 mb-3 bg-neutral-100 text-center">Large shadow</div>
+              <div class="shadow-xl p-3 mb-3 bg-neutral-100 text-center">Extra large shadow</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-12 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-4">Borders & Radius</h3>
+              <div class="border p-3 mb-3 text-center">Regular border</div>
+              <div class="border-top p-3 mb-3 text-center">Top border</div>
+              <div class="radius-none bg-primary-100 p-3 mb-3 text-center">No radius</div>
+              <div class="radius-sm bg-primary-100 p-3 mb-3 text-center">Small radius</div>
+              <div class="radius bg-primary-100 p-3 mb-3 text-center">Regular radius</div>
+              <div class="radius-lg bg-primary-100 p-3 mb-3 text-center">Large radius</div>
+              <div class="radius-pill bg-primary-100 p-3 mb-3 text-center">Pill radius</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center mb-6">
+        <h2 class="section-title">What Developers Say</h2>
+        <p class="section-subtitle">Trusted by developers worldwide</p>
+        <div class="divider mx-auto"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="testimonial-card">
+            <p class="mb-4">"NexaCSS has completely transformed how I build websites. The intuitive class names and comprehensive component library have cut my development time in half."</p>
+            <div class="d-flex align-center">
+              <img src="/placeholder.svg?height=56&width=56" alt="Sarah Johnson" class="avatar">
+              <div>
+                <h5 class="mb-0">Sarah Johnson</h5>
+                <p class="text-sm text-muted mb-0">Frontend Developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="testimonial-card">
+            <p class="mb-4">"The dark mode implementation is flawless. One attribute change and everything adapts perfectly. The customization options are also incredibly powerful."</p>
+            <div class="d-flex align-center">
+              <img src="/placeholder.svg?height=56&width=56" alt="Michael Chen" class="avatar">
+              <div>
+                <h5 class="mb-0">Michael Chen</h5>
+                <p class="text-sm text-muted mb-0">UI/UX Designer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="testimonial-card">
+            <p class="mb-4">"As an agency owner, I've mandated NexaCSS for all our projects. It's lightweight, performant, and the documentation is exceptional. Our clients love the results."</p>
+            <div class="d-flex align-center">
+              <img src="/placeholder.svg?height=56&width=56" alt="Emily Rodriguez" class="avatar">
+              <div>
+                <h5 class="mb-0">Emily Rodriguez</h5>
+                <p class="text-sm text-muted mb-0">Agency Owner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section bg-gradient-primary text-white">
+    <div class="container text-center">
+      <h2 class="mb-4">Ready to build something amazing?</h2>
+      <p class="lead mb-5">Get started with NexaCSS today and transform your web development workflow.</p>
+      <div>
+        <a href="#download" class="btn btn-light btn-lg mr-3">Download Now</a>
+        <a href="#documentation" class="btn btn-outline-light btn-lg">Read the Docs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-12 mb-5">
+          <a href="#" class="logo mb-4 d-block">
+            <span class="logo-text">Nexa<span class="text-gradient">CSS</span></span>
+          </a>
+          <p class="mb-4">A modern, intuitive CSS framework that empowers designers and developers to create stunning web experiences with minimal effort.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 col-6 mb-4">
+          <h5 class="footer-title">Framework</h5>
+          <ul class="footer-links">
+            <li><a href="#grid">Grid</a></li>
+            <li><a href="#typography">Typography</a></li>
+            <li><a href="#colors">Colors</a></li>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#utilities">Utilities</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 col-6 mb-4">
+          <h5 class="footer-title">Resources</h5>
+          <ul class="footer-links">
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#templates">Templates</a></li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li><a href="#blog">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 col-6 mb-4">
+          <h5 class="footer-title">Company</h5>
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-6 col-6 mb-4">
+          <h5 class="footer-title">Legal</h5>
+          <ul class="footer-links">
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#terms">Terms</a></li>
+            <li><a href="#license">License</a></li>
+            <li><a href="#cookies">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="row align-center">
+          <div class="col-md-6 col-12 mb-md-0 mb-3">
+            <p class="mb-0">&copy; 2025 NexaCSS. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 col-12 text-md-right">
+            <p class="mb-0">Made with ❤️ by developers for developers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    themeToggle.addEventListener('click', () => {
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
